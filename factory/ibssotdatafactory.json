@@ -5,6 +5,10 @@
 			"source_db": {
 				"type": "string",
 				"value": "BASE_DB"
+			},
+			"source_schema": {
+				"type": "string",
+				"value": "corp"
 			}
 		},
 		"globalConfigurations": {
