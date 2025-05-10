@@ -1,0 +1,964 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "ibssotdatafactory"
+		},
+		"Snowflake_basetier_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'Snowflake_basetier'"
+		},
+		"AzureBlobStorage1_sasUri": {
+			"type": "secureString",
+			"metadata": "Secure string for 'sasUri' of 'AzureBlobStorage1'"
+		},
+		"Snowflake_basetier_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "base_db"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/pipeline1')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "blob-base-corpv",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "DelimitedTextSource",
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
+									"enablePartitionDiscovery": false
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings"
+								}
+							},
+							"sink": {
+								"type": "SnowflakeV2Sink",
+								"importSettings": {
+									"type": "SnowflakeImportCopyCommand"
+								}
+							},
+							"enableStaging": true,
+							"stagingSettings": {
+								"linkedServiceName": {
+									"referenceName": "AzureBlobStorage1",
+									"type": "LinkedServiceReference"
+								},
+								"path": "ibssot"
+							},
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"name": "CUSTOMER",
+											"type": "String"
+										},
+										"sink": {
+											"name": "CUSTOMER",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "CUSTOMERNAME",
+											"type": "String"
+										},
+										"sink": {
+											"name": "CUSTOMERNAME",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "CUSTOMERFULLNAME",
+											"type": "String"
+										},
+										"sink": {
+											"name": "CUSTOMERFULLNAME",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "CREATEDBYUSER",
+											"type": "String"
+										},
+										"sink": {
+											"name": "CREATEDBYUSER",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "CREATIONDATE",
+											"type": "String"
+										},
+										"sink": {
+											"name": "CREATIONDATE",
+											"type": "DateTime"
+										}
+									},
+									{
+										"source": {
+											"name": "ADDRESSID",
+											"type": "String"
+										},
+										"sink": {
+											"name": "ADDRESSID",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "CUSTOMERCLASSIFICATION",
+											"type": "String"
+										},
+										"sink": {
+											"name": "CUSTOMERCLASSIFICATION",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "VATREGISTRATION",
+											"type": "String"
+										},
+										"sink": {
+											"name": "VATREGISTRATION",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "CUSTOMERACCOUNTGROUP",
+											"type": "String"
+										},
+										"sink": {
+											"name": "CUSTOMERACCOUNTGROUP",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "AUTHORIZATIONGROUP",
+											"type": "String"
+										},
+										"sink": {
+											"name": "AUTHORIZATIONGROUP",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "DELIVERYISBLOCKED",
+											"type": "String"
+										},
+										"sink": {
+											"name": "DELIVERYISBLOCKED",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "POSTINGISBLOCKED",
+											"type": "String"
+										},
+										"sink": {
+											"name": "POSTINGISBLOCKED",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "BILLINGISBLOCKEDFORCUSTOMER",
+											"type": "String"
+										},
+										"sink": {
+											"name": "BILLINGISBLOCKEDFORCUSTOMER",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "ORDERISBLOCKEDFORCUSTOMER",
+											"type": "String"
+										},
+										"sink": {
+											"name": "ORDERISBLOCKEDFORCUSTOMER",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "INDUSTRY",
+											"type": "String"
+										},
+										"sink": {
+											"name": "INDUSTRY",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "INDUSTRYCODES",
+											"type": "String"
+										},
+										"sink": {
+											"name": "INDUSTRYCODES",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "COUNTRY",
+											"type": "String"
+										},
+										"sink": {
+											"name": "COUNTRY",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "CITYNAME",
+											"type": "String"
+										},
+										"sink": {
+											"name": "CITYNAME",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "POSTALCODE",
+											"type": "String"
+										},
+										"sink": {
+											"name": "POSTALCODE",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "STREETNAME",
+											"type": "String"
+										},
+										"sink": {
+											"name": "STREETNAME",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "TELEPHONENUMBER1",
+											"type": "String"
+										},
+										"sink": {
+											"name": "TELEPHONENUMBER1",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "REGION",
+											"type": "String"
+										},
+										"sink": {
+											"name": "REGION",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "CURRENCY",
+											"type": "String"
+										},
+										"sink": {
+											"name": "CURRENCY",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "DL_UPDATE_DATE",
+											"type": "String"
+										},
+										"sink": {
+											"name": "DL_UPDATE_DATE",
+											"type": "DateTime"
+										}
+									}
+								]
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "corp_v",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "SnowflakeTable1",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/corp_v')]",
+				"[concat(variables('factoryId'), '/datasets/SnowflakeTable1')]",
+				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SnowflakeTable1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "Snowflake_basetier",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "SnowflakeV2Table",
+				"schema": [
+					{
+						"name": "CUSTOMER",
+						"type": "VARCHAR"
+					},
+					{
+						"name": "CUSTOMERNAME",
+						"type": "VARCHAR"
+					},
+					{
+						"name": "CUSTOMERFULLNAME",
+						"type": "VARCHAR"
+					},
+					{
+						"name": "CREATEDBYUSER",
+						"type": "VARCHAR"
+					},
+					{
+						"name": "CREATIONDATE",
+						"type": "DATE"
+					},
+					{
+						"name": "ADDRESSID",
+						"type": "VARCHAR"
+					},
+					{
+						"name": "CUSTOMERCLASSIFICATION",
+						"type": "VARCHAR"
+					},
+					{
+						"name": "VATREGISTRATION",
+						"type": "VARCHAR"
+					},
+					{
+						"name": "CUSTOMERACCOUNTGROUP",
+						"type": "VARCHAR"
+					},
+					{
+						"name": "AUTHORIZATIONGROUP",
+						"type": "VARCHAR"
+					},
+					{
+						"name": "DELIVERYISBLOCKED",
+						"type": "VARCHAR"
+					},
+					{
+						"name": "POSTINGISBLOCKED",
+						"type": "VARCHAR"
+					},
+					{
+						"name": "BILLINGISBLOCKEDFORCUSTOMER",
+						"type": "VARCHAR"
+					},
+					{
+						"name": "ORDERISBLOCKEDFORCUSTOMER",
+						"type": "VARCHAR"
+					},
+					{
+						"name": "INDUSTRY",
+						"type": "VARCHAR"
+					},
+					{
+						"name": "INDUSTRYCODES",
+						"type": "VARCHAR"
+					},
+					{
+						"name": "COUNTRY",
+						"type": "VARCHAR"
+					},
+					{
+						"name": "CITYNAME",
+						"type": "VARCHAR"
+					},
+					{
+						"name": "POSTALCODE",
+						"type": "VARCHAR"
+					},
+					{
+						"name": "STREETNAME",
+						"type": "VARCHAR"
+					},
+					{
+						"name": "TELEPHONENUMBER1",
+						"type": "VARCHAR"
+					},
+					{
+						"name": "REGION",
+						"type": "VARCHAR"
+					},
+					{
+						"name": "CURRENCY",
+						"type": "VARCHAR"
+					},
+					{
+						"name": "DL_UPDATE_DATE",
+						"type": "TIMESTAMP_NTZ"
+					}
+				],
+				"typeProperties": {
+					"schema": "CORP",
+					"table": "CORP_V"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/Snowflake_basetier')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/corp_v')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "corp_v.csv",
+						"container": "ibssot"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "CUSTOMER",
+						"type": "String"
+					},
+					{
+						"name": "CUSTOMERNAME",
+						"type": "String"
+					},
+					{
+						"name": "CUSTOMERFULLNAME",
+						"type": "String"
+					},
+					{
+						"name": "CREATEDBYUSER",
+						"type": "String"
+					},
+					{
+						"name": "CREATIONDATE",
+						"type": "String"
+					},
+					{
+						"name": "ADDRESSID",
+						"type": "String"
+					},
+					{
+						"name": "CUSTOMERCLASSIFICATION",
+						"type": "String"
+					},
+					{
+						"name": "VATREGISTRATION",
+						"type": "String"
+					},
+					{
+						"name": "CUSTOMERACCOUNTGROUP",
+						"type": "String"
+					},
+					{
+						"name": "AUTHORIZATIONGROUP",
+						"type": "String"
+					},
+					{
+						"name": "DELIVERYISBLOCKED",
+						"type": "String"
+					},
+					{
+						"name": "POSTINGISBLOCKED",
+						"type": "String"
+					},
+					{
+						"name": "BILLINGISBLOCKEDFORCUSTOMER",
+						"type": "String"
+					},
+					{
+						"name": "ORDERISBLOCKEDFORCUSTOMER",
+						"type": "String"
+					},
+					{
+						"name": "INTERNATIONALLOCATIONNUMBER1",
+						"type": "String"
+					},
+					{
+						"name": "ISONETIMEACCOUNT",
+						"type": "String"
+					},
+					{
+						"name": "INDUSTRY",
+						"type": "String"
+					},
+					{
+						"name": "CUSTOMERCORPORATEGROUP",
+						"type": "String"
+					},
+					{
+						"name": "SUPPLIER",
+						"type": "String"
+					},
+					{
+						"name": "NIELSENREGION",
+						"type": "String"
+					},
+					{
+						"name": "INDUSTRYCODE1",
+						"type": "String"
+					},
+					{
+						"name": "INDUSTRYCODE2",
+						"type": "String"
+					},
+					{
+						"name": "INDUSTRYCODE3",
+						"type": "String"
+					},
+					{
+						"name": "INDUSTRYCODE4",
+						"type": "String"
+					},
+					{
+						"name": "INDUSTRYCODES",
+						"type": "String"
+					},
+					{
+						"name": "COUNTRY",
+						"type": "String"
+					},
+					{
+						"name": "ORGANIZATIONBPNAME1",
+						"type": "String"
+					},
+					{
+						"name": "ORGANIZATIONBPNAME2",
+						"type": "String"
+					},
+					{
+						"name": "CITYNAME",
+						"type": "String"
+					},
+					{
+						"name": "POSTALCODE",
+						"type": "String"
+					},
+					{
+						"name": "STREETNAME",
+						"type": "String"
+					},
+					{
+						"name": "SORTFIELD",
+						"type": "String"
+					},
+					{
+						"name": "FAXNUMBER",
+						"type": "String"
+					},
+					{
+						"name": "BR_SUFRAMACODE",
+						"type": "String"
+					},
+					{
+						"name": "REGION",
+						"type": "String"
+					},
+					{
+						"name": "TELEPHONENUMBER1",
+						"type": "String"
+					},
+					{
+						"name": "TELEPHONENUMBER2",
+						"type": "String"
+					},
+					{
+						"name": "ALTERNATIVEPAYERACCOUNT",
+						"type": "String"
+					},
+					{
+						"name": "DATAMEDIUMEXCHANGEINDICATOR",
+						"type": "String"
+					},
+					{
+						"name": "VATLIABILITY",
+						"type": "String"
+					},
+					{
+						"name": "ISBUSINESSPURPOSECOMPLETED",
+						"type": "String"
+					},
+					{
+						"name": "RESPONSIBLETYPE",
+						"type": "String"
+					},
+					{
+						"name": "FISCALADDRESS",
+						"type": "String"
+					},
+					{
+						"name": "NFPARTNERISNATURALPERSON",
+						"type": "String"
+					},
+					{
+						"name": "DELETIONINDICATOR",
+						"type": "String"
+					},
+					{
+						"name": "LANGUAGE",
+						"type": "String"
+					},
+					{
+						"name": "TRADINGPARTNER",
+						"type": "String"
+					},
+					{
+						"name": "TAXINVOICEREPRESENTATIVENAME",
+						"type": "String"
+					},
+					{
+						"name": "BUSINESSTYPE",
+						"type": "String"
+					},
+					{
+						"name": "INDUSTRYTYPE",
+						"type": "String"
+					},
+					{
+						"name": "IBPRICETIER",
+						"type": "String"
+					},
+					{
+						"name": "DISTPRICETIER",
+						"type": "String"
+					},
+					{
+						"name": "CENTRALSALESBLOCKFORCUSTOMER",
+						"type": "String"
+					},
+					{
+						"name": "ATTRIBUTE1",
+						"type": "String"
+					},
+					{
+						"name": "DEALERZONE",
+						"type": "String"
+					},
+					{
+						"name": "SERVICE1",
+						"type": "String"
+					},
+					{
+						"name": "SERVICE2",
+						"type": "String"
+					},
+					{
+						"name": "SERVICE3",
+						"type": "String"
+					},
+					{
+						"name": "SERVICE4",
+						"type": "String"
+					},
+					{
+						"name": "SERVICES",
+						"type": "String"
+					},
+					{
+						"name": "COREXCHANGE",
+						"type": "String"
+					},
+					{
+						"name": "DIVISION",
+						"type": "String"
+					},
+					{
+						"name": "DISTRIBUTIONCHANNEL",
+						"type": "String"
+					},
+					{
+						"name": "SALESORGANIZATION",
+						"type": "String"
+					},
+					{
+						"name": "CUSTOMERABCCLASSIFICATION",
+						"type": "String"
+					},
+					{
+						"name": "SALESOFFICE",
+						"type": "String"
+					},
+					{
+						"name": "SALESGROUP",
+						"type": "String"
+					},
+					{
+						"name": "CURRENCY",
+						"type": "String"
+					},
+					{
+						"name": "CUSTOMERPRICEGROUP",
+						"type": "String"
+					},
+					{
+						"name": "PRICELISTTYPE",
+						"type": "String"
+					},
+					{
+						"name": "DELIVERYPRIORITY",
+						"type": "String"
+					},
+					{
+						"name": "SHIPPINGCONDITION",
+						"type": "String"
+					},
+					{
+						"name": "INCOTERMSCLASSIFICATION",
+						"type": "String"
+					},
+					{
+						"name": "SUPPLYINGPLANT",
+						"type": "String"
+					},
+					{
+						"name": "COMPLETEDELIVERYISDEFINED",
+						"type": "String"
+					},
+					{
+						"name": "DELIVERYISBLOCKEDFORCUSTOMER",
+						"type": "String"
+					},
+					{
+						"name": "CUSTOMERPAYMENTTERMS",
+						"type": "String"
+					},
+					{
+						"name": "CUSTOMERACCOUNTASSIGNMENTGROUP",
+						"type": "String"
+					},
+					{
+						"name": "ACCOUNTBYCUSTOMER",
+						"type": "String"
+					},
+					{
+						"name": "CUSTOMERGROUP",
+						"type": "String"
+					},
+					{
+						"name": "CUSTOMERPRICINGPROCEDURE",
+						"type": "String"
+					},
+					{
+						"name": "ORDERCOMBINATIONISALLOWED",
+						"type": "String"
+					},
+					{
+						"name": "PARTIALDELIVERYISALLOWED",
+						"type": "String"
+					},
+					{
+						"name": "INVOICEDATE",
+						"type": "String"
+					},
+					{
+						"name": "PAYMENTTERMS",
+						"type": "String"
+					},
+					{
+						"name": "INCOTERMSTRANSFERLOCATION",
+						"type": "String"
+					},
+					{
+						"name": "ITEMORDERPROBABILITYINPERCENT",
+						"type": "String"
+					},
+					{
+						"name": "INCOTERMSLOCATION2",
+						"type": "String"
+					},
+					{
+						"name": "SALESDISTRICT",
+						"type": "String"
+					},
+					{
+						"name": "INCOTERMSVERSION",
+						"type": "String"
+					},
+					{
+						"name": "INCOTERMSLOCATION1",
+						"type": "String"
+					},
+					{
+						"name": "SALESITEMPROPOSAL",
+						"type": "String"
+					},
+					{
+						"name": "MAXNMBROFPARTIALDELIVERY",
+						"type": "String"
+					},
+					{
+						"name": "UNDERDELIVTOLRTDLMTRATIOINPCT",
+						"type": "String"
+					},
+					{
+						"name": "OVERDELIVTOLRTDLMTRATIOINPCT",
+						"type": "String"
+					},
+					{
+						"name": "ISACTIVEENTITY",
+						"type": "String"
+					},
+					{
+						"name": "ADDITIONALCUSTOMERGROUP1",
+						"type": "String"
+					},
+					{
+						"name": "ADDITIONALCUSTOMERGROUP2",
+						"type": "String"
+					},
+					{
+						"name": "ADDITIONALCUSTOMERGROUP3",
+						"type": "String"
+					},
+					{
+						"name": "ADDITIONALCUSTOMERGROUP4",
+						"type": "String"
+					},
+					{
+						"name": "ADDITIONALCUSTOMERGROUPS",
+						"type": "String"
+					},
+					{
+						"name": "BPIDENTIFICATIONNUMBER",
+						"type": "String"
+					},
+					{
+						"name": "BPIDENTIFICATIONTYPE",
+						"type": "String"
+					},
+					{
+						"name": "BUSINESSPARTNER",
+						"type": "String"
+					},
+					{
+						"name": "VALIDITYSTARTDATE",
+						"type": "String"
+					},
+					{
+						"name": "VALIDITYENDDATE",
+						"type": "String"
+					},
+					{
+						"name": "BUSINESSPARTNERISBLOCKED",
+						"type": "String"
+					},
+					{
+						"name": "ISMARKEDFORARCHIVING",
+						"type": "String"
+					},
+					{
+						"name": "DL_UPDATE_DATE",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureBlobStorage1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "sp=r&st=2025-05-10T18:03:17Z&se=2025-05-11T02:03:17Z&spr=https&sv=2024-11-04&sr=c&sig=%2F9IL9Z%2FwnPPlO%2BHkcC0O0VaBf%2Fk9O1smZHltXnvDZLo%3D",
+				"annotations": [],
+				"type": "AzureBlobStorage",
+				"typeProperties": {
+					"sasUri": "[parameters('AzureBlobStorage1_sasUri')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Snowflake_basetier')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "SnowflakeV2",
+				"typeProperties": {
+					"authenticationType": "Basic",
+					"accountIdentifier": "xebeuyz-rna86391",
+					"user": "ddcrpf",
+					"database": "[parameters('Snowflake_basetier_properties_typeProperties_database')]",
+					"warehouse": "COMPUTE_WH",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('Snowflake_basetier_password')]"
+					}
+				},
+				"version": "1.1"
+			},
+			"dependsOn": []
+		}
+	]
+}
