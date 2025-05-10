@@ -1,6 +1,12 @@
 {
 	"name": "ibssotdatafactory",
 	"properties": {
+		"globalParameters": {
+			"source_db": {
+				"type": "string",
+				"value": "BASE_DB"
+			}
+		},
 		"globalConfigurations": {
 			"PipelineBillingEnabled": "true",
 			"factoryStagingLSReferenceName": "AzureBlobStorage1",
