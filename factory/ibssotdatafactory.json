@@ -1,0 +1,9 @@
+{
+	"name": "ibssotdatafactory",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "30c207e6-38be-4e2a-884f-c8583f4d3cc2",
+		"tenantId": "c377df80-8402-462a-9ba9-8c332f1ac8c4"
+	}
+}
