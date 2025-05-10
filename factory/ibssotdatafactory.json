@@ -9,6 +9,10 @@
 			"source_schema": {
 				"type": "string",
 				"value": "corp"
+			},
+			"target_db\t": {
+				"type": "string",
+				"value": "DOMAIN_DB"
 			}
 		},
 		"globalConfigurations": {
