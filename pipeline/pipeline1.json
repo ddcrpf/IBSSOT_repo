@@ -1,0 +1,305 @@
+{
+	"name": "pipeline1",
+	"properties": {
+		"activities": [
+			{
+				"name": "blob-base-corpv",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "SnowflakeV2Sink",
+						"importSettings": {
+							"type": "SnowflakeImportCopyCommand"
+						}
+					},
+					"enableStaging": true,
+					"stagingSettings": {
+						"linkedServiceName": {
+							"referenceName": "AzureBlobStorage1",
+							"type": "LinkedServiceReference"
+						},
+						"path": "ibssot"
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "CUSTOMER",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CUSTOMER",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CUSTOMERNAME",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CUSTOMERNAME",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CUSTOMERFULLNAME",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CUSTOMERFULLNAME",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CREATEDBYUSER",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CREATEDBYUSER",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CREATIONDATE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CREATIONDATE",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "ADDRESSID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ADDRESSID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CUSTOMERCLASSIFICATION",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CUSTOMERCLASSIFICATION",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "VATREGISTRATION",
+									"type": "String"
+								},
+								"sink": {
+									"name": "VATREGISTRATION",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CUSTOMERACCOUNTGROUP",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CUSTOMERACCOUNTGROUP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AUTHORIZATIONGROUP",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AUTHORIZATIONGROUP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DELIVERYISBLOCKED",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DELIVERYISBLOCKED",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "POSTINGISBLOCKED",
+									"type": "String"
+								},
+								"sink": {
+									"name": "POSTINGISBLOCKED",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BILLINGISBLOCKEDFORCUSTOMER",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BILLINGISBLOCKEDFORCUSTOMER",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ORDERISBLOCKEDFORCUSTOMER",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ORDERISBLOCKEDFORCUSTOMER",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INDUSTRY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INDUSTRY",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INDUSTRYCODES",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INDUSTRYCODES",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "COUNTRY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "COUNTRY",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CITYNAME",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CITYNAME",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "POSTALCODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "POSTALCODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "STREETNAME",
+									"type": "String"
+								},
+								"sink": {
+									"name": "STREETNAME",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TELEPHONENUMBER1",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TELEPHONENUMBER1",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "REGION",
+									"type": "String"
+								},
+								"sink": {
+									"name": "REGION",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CURRENCY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CURRENCY",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DL_UPDATE_DATE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DL_UPDATE_DATE",
+									"type": "DateTime"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "corp_v",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SnowflakeTable1",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": []
+	}
+}

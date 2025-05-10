@@ -1,0 +1,113 @@
+{
+	"name": "SnowflakeTable1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Snowflake_basetier",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SnowflakeV2Table",
+		"schema": [
+			{
+				"name": "CUSTOMER",
+				"type": "VARCHAR"
+			},
+			{
+				"name": "CUSTOMERNAME",
+				"type": "VARCHAR"
+			},
+			{
+				"name": "CUSTOMERFULLNAME",
+				"type": "VARCHAR"
+			},
+			{
+				"name": "CREATEDBYUSER",
+				"type": "VARCHAR"
+			},
+			{
+				"name": "CREATIONDATE",
+				"type": "DATE"
+			},
+			{
+				"name": "ADDRESSID",
+				"type": "VARCHAR"
+			},
+			{
+				"name": "CUSTOMERCLASSIFICATION",
+				"type": "VARCHAR"
+			},
+			{
+				"name": "VATREGISTRATION",
+				"type": "VARCHAR"
+			},
+			{
+				"name": "CUSTOMERACCOUNTGROUP",
+				"type": "VARCHAR"
+			},
+			{
+				"name": "AUTHORIZATIONGROUP",
+				"type": "VARCHAR"
+			},
+			{
+				"name": "DELIVERYISBLOCKED",
+				"type": "VARCHAR"
+			},
+			{
+				"name": "POSTINGISBLOCKED",
+				"type": "VARCHAR"
+			},
+			{
+				"name": "BILLINGISBLOCKEDFORCUSTOMER",
+				"type": "VARCHAR"
+			},
+			{
+				"name": "ORDERISBLOCKEDFORCUSTOMER",
+				"type": "VARCHAR"
+			},
+			{
+				"name": "INDUSTRY",
+				"type": "VARCHAR"
+			},
+			{
+				"name": "INDUSTRYCODES",
+				"type": "VARCHAR"
+			},
+			{
+				"name": "COUNTRY",
+				"type": "VARCHAR"
+			},
+			{
+				"name": "CITYNAME",
+				"type": "VARCHAR"
+			},
+			{
+				"name": "POSTALCODE",
+				"type": "VARCHAR"
+			},
+			{
+				"name": "STREETNAME",
+				"type": "VARCHAR"
+			},
+			{
+				"name": "TELEPHONENUMBER1",
+				"type": "VARCHAR"
+			},
+			{
+				"name": "REGION",
+				"type": "VARCHAR"
+			},
+			{
+				"name": "CURRENCY",
+				"type": "VARCHAR"
+			},
+			{
+				"name": "DL_UPDATE_DATE",
+				"type": "TIMESTAMP_NTZ"
+			}
+		],
+		"typeProperties": {
+			"schema": "CORP",
+			"table": "CORP_V"
+		}
+	}
+}

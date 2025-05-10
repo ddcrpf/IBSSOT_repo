@@ -1,0 +1,460 @@
+{
+	"name": "corp_v",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "corp_v.csv",
+				"container": "ibssot"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "CUSTOMER",
+				"type": "String"
+			},
+			{
+				"name": "CUSTOMERNAME",
+				"type": "String"
+			},
+			{
+				"name": "CUSTOMERFULLNAME",
+				"type": "String"
+			},
+			{
+				"name": "CREATEDBYUSER",
+				"type": "String"
+			},
+			{
+				"name": "CREATIONDATE",
+				"type": "String"
+			},
+			{
+				"name": "ADDRESSID",
+				"type": "String"
+			},
+			{
+				"name": "CUSTOMERCLASSIFICATION",
+				"type": "String"
+			},
+			{
+				"name": "VATREGISTRATION",
+				"type": "String"
+			},
+			{
+				"name": "CUSTOMERACCOUNTGROUP",
+				"type": "String"
+			},
+			{
+				"name": "AUTHORIZATIONGROUP",
+				"type": "String"
+			},
+			{
+				"name": "DELIVERYISBLOCKED",
+				"type": "String"
+			},
+			{
+				"name": "POSTINGISBLOCKED",
+				"type": "String"
+			},
+			{
+				"name": "BILLINGISBLOCKEDFORCUSTOMER",
+				"type": "String"
+			},
+			{
+				"name": "ORDERISBLOCKEDFORCUSTOMER",
+				"type": "String"
+			},
+			{
+				"name": "INTERNATIONALLOCATIONNUMBER1",
+				"type": "String"
+			},
+			{
+				"name": "ISONETIMEACCOUNT",
+				"type": "String"
+			},
+			{
+				"name": "INDUSTRY",
+				"type": "String"
+			},
+			{
+				"name": "CUSTOMERCORPORATEGROUP",
+				"type": "String"
+			},
+			{
+				"name": "SUPPLIER",
+				"type": "String"
+			},
+			{
+				"name": "NIELSENREGION",
+				"type": "String"
+			},
+			{
+				"name": "INDUSTRYCODE1",
+				"type": "String"
+			},
+			{
+				"name": "INDUSTRYCODE2",
+				"type": "String"
+			},
+			{
+				"name": "INDUSTRYCODE3",
+				"type": "String"
+			},
+			{
+				"name": "INDUSTRYCODE4",
+				"type": "String"
+			},
+			{
+				"name": "INDUSTRYCODES",
+				"type": "String"
+			},
+			{
+				"name": "COUNTRY",
+				"type": "String"
+			},
+			{
+				"name": "ORGANIZATIONBPNAME1",
+				"type": "String"
+			},
+			{
+				"name": "ORGANIZATIONBPNAME2",
+				"type": "String"
+			},
+			{
+				"name": "CITYNAME",
+				"type": "String"
+			},
+			{
+				"name": "POSTALCODE",
+				"type": "String"
+			},
+			{
+				"name": "STREETNAME",
+				"type": "String"
+			},
+			{
+				"name": "SORTFIELD",
+				"type": "String"
+			},
+			{
+				"name": "FAXNUMBER",
+				"type": "String"
+			},
+			{
+				"name": "BR_SUFRAMACODE",
+				"type": "String"
+			},
+			{
+				"name": "REGION",
+				"type": "String"
+			},
+			{
+				"name": "TELEPHONENUMBER1",
+				"type": "String"
+			},
+			{
+				"name": "TELEPHONENUMBER2",
+				"type": "String"
+			},
+			{
+				"name": "ALTERNATIVEPAYERACCOUNT",
+				"type": "String"
+			},
+			{
+				"name": "DATAMEDIUMEXCHANGEINDICATOR",
+				"type": "String"
+			},
+			{
+				"name": "VATLIABILITY",
+				"type": "String"
+			},
+			{
+				"name": "ISBUSINESSPURPOSECOMPLETED",
+				"type": "String"
+			},
+			{
+				"name": "RESPONSIBLETYPE",
+				"type": "String"
+			},
+			{
+				"name": "FISCALADDRESS",
+				"type": "String"
+			},
+			{
+				"name": "NFPARTNERISNATURALPERSON",
+				"type": "String"
+			},
+			{
+				"name": "DELETIONINDICATOR",
+				"type": "String"
+			},
+			{
+				"name": "LANGUAGE",
+				"type": "String"
+			},
+			{
+				"name": "TRADINGPARTNER",
+				"type": "String"
+			},
+			{
+				"name": "TAXINVOICEREPRESENTATIVENAME",
+				"type": "String"
+			},
+			{
+				"name": "BUSINESSTYPE",
+				"type": "String"
+			},
+			{
+				"name": "INDUSTRYTYPE",
+				"type": "String"
+			},
+			{
+				"name": "IBPRICETIER",
+				"type": "String"
+			},
+			{
+				"name": "DISTPRICETIER",
+				"type": "String"
+			},
+			{
+				"name": "CENTRALSALESBLOCKFORCUSTOMER",
+				"type": "String"
+			},
+			{
+				"name": "ATTRIBUTE1",
+				"type": "String"
+			},
+			{
+				"name": "DEALERZONE",
+				"type": "String"
+			},
+			{
+				"name": "SERVICE1",
+				"type": "String"
+			},
+			{
+				"name": "SERVICE2",
+				"type": "String"
+			},
+			{
+				"name": "SERVICE3",
+				"type": "String"
+			},
+			{
+				"name": "SERVICE4",
+				"type": "String"
+			},
+			{
+				"name": "SERVICES",
+				"type": "String"
+			},
+			{
+				"name": "COREXCHANGE",
+				"type": "String"
+			},
+			{
+				"name": "DIVISION",
+				"type": "String"
+			},
+			{
+				"name": "DISTRIBUTIONCHANNEL",
+				"type": "String"
+			},
+			{
+				"name": "SALESORGANIZATION",
+				"type": "String"
+			},
+			{
+				"name": "CUSTOMERABCCLASSIFICATION",
+				"type": "String"
+			},
+			{
+				"name": "SALESOFFICE",
+				"type": "String"
+			},
+			{
+				"name": "SALESGROUP",
+				"type": "String"
+			},
+			{
+				"name": "CURRENCY",
+				"type": "String"
+			},
+			{
+				"name": "CUSTOMERPRICEGROUP",
+				"type": "String"
+			},
+			{
+				"name": "PRICELISTTYPE",
+				"type": "String"
+			},
+			{
+				"name": "DELIVERYPRIORITY",
+				"type": "String"
+			},
+			{
+				"name": "SHIPPINGCONDITION",
+				"type": "String"
+			},
+			{
+				"name": "INCOTERMSCLASSIFICATION",
+				"type": "String"
+			},
+			{
+				"name": "SUPPLYINGPLANT",
+				"type": "String"
+			},
+			{
+				"name": "COMPLETEDELIVERYISDEFINED",
+				"type": "String"
+			},
+			{
+				"name": "DELIVERYISBLOCKEDFORCUSTOMER",
+				"type": "String"
+			},
+			{
+				"name": "CUSTOMERPAYMENTTERMS",
+				"type": "String"
+			},
+			{
+				"name": "CUSTOMERACCOUNTASSIGNMENTGROUP",
+				"type": "String"
+			},
+			{
+				"name": "ACCOUNTBYCUSTOMER",
+				"type": "String"
+			},
+			{
+				"name": "CUSTOMERGROUP",
+				"type": "String"
+			},
+			{
+				"name": "CUSTOMERPRICINGPROCEDURE",
+				"type": "String"
+			},
+			{
+				"name": "ORDERCOMBINATIONISALLOWED",
+				"type": "String"
+			},
+			{
+				"name": "PARTIALDELIVERYISALLOWED",
+				"type": "String"
+			},
+			{
+				"name": "INVOICEDATE",
+				"type": "String"
+			},
+			{
+				"name": "PAYMENTTERMS",
+				"type": "String"
+			},
+			{
+				"name": "INCOTERMSTRANSFERLOCATION",
+				"type": "String"
+			},
+			{
+				"name": "ITEMORDERPROBABILITYINPERCENT",
+				"type": "String"
+			},
+			{
+				"name": "INCOTERMSLOCATION2",
+				"type": "String"
+			},
+			{
+				"name": "SALESDISTRICT",
+				"type": "String"
+			},
+			{
+				"name": "INCOTERMSVERSION",
+				"type": "String"
+			},
+			{
+				"name": "INCOTERMSLOCATION1",
+				"type": "String"
+			},
+			{
+				"name": "SALESITEMPROPOSAL",
+				"type": "String"
+			},
+			{
+				"name": "MAXNMBROFPARTIALDELIVERY",
+				"type": "String"
+			},
+			{
+				"name": "UNDERDELIVTOLRTDLMTRATIOINPCT",
+				"type": "String"
+			},
+			{
+				"name": "OVERDELIVTOLRTDLMTRATIOINPCT",
+				"type": "String"
+			},
+			{
+				"name": "ISACTIVEENTITY",
+				"type": "String"
+			},
+			{
+				"name": "ADDITIONALCUSTOMERGROUP1",
+				"type": "String"
+			},
+			{
+				"name": "ADDITIONALCUSTOMERGROUP2",
+				"type": "String"
+			},
+			{
+				"name": "ADDITIONALCUSTOMERGROUP3",
+				"type": "String"
+			},
+			{
+				"name": "ADDITIONALCUSTOMERGROUP4",
+				"type": "String"
+			},
+			{
+				"name": "ADDITIONALCUSTOMERGROUPS",
+				"type": "String"
+			},
+			{
+				"name": "BPIDENTIFICATIONNUMBER",
+				"type": "String"
+			},
+			{
+				"name": "BPIDENTIFICATIONTYPE",
+				"type": "String"
+			},
+			{
+				"name": "BUSINESSPARTNER",
+				"type": "String"
+			},
+			{
+				"name": "VALIDITYSTARTDATE",
+				"type": "String"
+			},
+			{
+				"name": "VALIDITYENDDATE",
+				"type": "String"
+			},
+			{
+				"name": "BUSINESSPARTNERISBLOCKED",
+				"type": "String"
+			},
+			{
+				"name": "ISMARKEDFORARCHIVING",
+				"type": "String"
+			},
+			{
+				"name": "DL_UPDATE_DATE",
+				"type": "String"
+			}
+		]
+	}
+}
