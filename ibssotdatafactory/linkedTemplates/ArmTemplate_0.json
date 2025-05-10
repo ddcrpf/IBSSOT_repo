@@ -676,7 +676,10 @@
 							"sink": {
 								"type": "SnowflakeV2Sink",
 								"importSettings": {
-									"type": "SnowflakeImportCopyCommand"
+									"type": "SnowflakeImportCopyCommand",
+									"additionalCopyOptions": {
+										"ON_ERROR": "CONTINUE"
+									}
 								}
 							},
 							"enableStaging": true,
@@ -687,6 +690,7 @@
 								},
 								"path": "ibssot"
 							},
+							"enableSkipIncompatibleRow": true,
 							"translator": {
 								"type": "TabularTranslator",
 								"mappings": [
